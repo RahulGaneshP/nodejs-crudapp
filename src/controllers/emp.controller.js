@@ -66,5 +66,16 @@ exports.create = async(req, res) =>{
             };
         }
         };
+
+        exports.delete = async(req, res) =>{
+            try{
+            const employee = await Employee.delete(req.params.id);
+            res.status(204);   
+            }
+            catch(err){
+                console.log(err);
+                res.sendStatus(400);
+            };
+          };
     
   

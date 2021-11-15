@@ -81,5 +81,19 @@ Employee.update =(id, employee)=>{
   });
 };
 
+Employee.delete = (id)=>{
+    return new Promise((resolve,reject)=>{
+    dbConn.query("DELETE FROM employee WHERE id = ?", [id], function (err, res) {
+       if(err) {
+        console.log("error: ", err);
+        return reject( err);
+       }
+       else{
+          return resolve(res);
+       }
+   }); 
+});
+};
+
 module.exports= Employee;
         
