@@ -75,7 +75,7 @@ Employee.update =(id, employee)=>{
               console.log("error: ", err);
               return reject( err);
           }else{   
-            return resolve( res.affectedRows);
+            return resolve( res.changedRows);
           }
       }); 
   });
@@ -94,6 +94,28 @@ Employee.delete = (id)=>{
    }); 
 });
 };
+
+Employee.createbatch = (newEmp) =>{    
+    return new Promise((resolve,reject)=>{
+    var values=[];
+    for(var i in newEmp){
+        var obj = (Object.values(newEmp[i]));
+        values.push(obj)
+    }
+  var sql = "INSERT INTO employee (firstname,lastname,email,phno,designation,salary) VALUES ?";
+  dbConn.query(sql,[values], function (err, res) {
+        if(err) {
+            console.log("error: ", err);
+            return reject(err);
+        }
+        else{
+            console.log(res.affectedRows);
+            return resolve( res.affectedRows);
+        }
+    });           
+});
+};
+
 
 module.exports= Employee;
         

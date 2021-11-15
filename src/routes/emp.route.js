@@ -13,7 +13,7 @@ router.get('/phno/:phno', employeeController.findByNo);
 router.post('/', employeeController.create);
 
 //create batch
-//router.post('/addbatch', employeeController.createbatch);
+router.post('/addbatch', employeeController.createbatch);
 
 // Update a employee with id
 router.put('/:id', employeeController.update);

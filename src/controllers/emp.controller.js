@@ -58,7 +58,7 @@ exports.create = async(req, res) =>{
         }else{
             try{
             var noRows = await Employee.update(req.params.id, new Employee(req.body));
-            res.status(200).json({message:"Employee successfully updated",rowsUpdated: noRows});
+            res.status(200).json({message:"Employee successfully updated",Updatedrows: noRows});
             }
             catch(err) {
                 console.log(err);
@@ -77,5 +77,23 @@ exports.create = async(req, res) =>{
                 res.sendStatus(400);
             };
           };
+
+          exports.createbatch = async(req, res)=> {
+            var new_employee = req.body.records;
+            //handles null error 
+           if(req.body.constructor === Object && Object.keys(req.body).length === 0){
+               res.status(400).send({ error:true, message: 'Please provide all required field' });
+            }else{
+                try{
+                var nofRows = await Employee.createbatch(new_employee);
+                res.status(201).json({message:"Employee added successfully!",rowsAffected:nofRows});
+                } 
+                catch(err) {
+                    console.log(err);
+                    res.sendStatus(400); 
+                };
+            }
+        };
+
     
   
