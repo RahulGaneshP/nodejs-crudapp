@@ -35,5 +35,22 @@ exports.findByNo = async(req, res) => {
         };
     };
 
+exports.create = async(req, res) =>{
+        const new_employee = new Employee(req.body);
+        //handles null error 
+       if(req.body.constructor === Object && Object.keys(req.body).length === 0){
+            res.status(400).send({ error:true, message: 'Please provide all required field' });
+        }else{
+            try{
+            var empid = await Employee.create(new_employee); 
+            res.status(201).json({message:"Employee added successfully!",employeeid:empid});
+            }
+            catch(err){
+                console.log(err);
+                res.sendStatus(400);   
+            };
+        }
+    };
+
 
   

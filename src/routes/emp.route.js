@@ -10,7 +10,7 @@ router.get('/email/:email', employeeController.findByEmail);
 router.get('/phno/:phno', employeeController.findByNo);
 
 //create a employee
-//router.post('/', employeeController.create);
+router.post('/', employeeController.create);
 
 //create batch
 //router.post('/addbatch', employeeController.createbatch);

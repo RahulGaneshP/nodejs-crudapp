@@ -2,7 +2,14 @@ const mysql = require('mysql');
 const constr = require ('../config/config.json');
 const dbConn = mysql.createPool(constr);
 
-var Employee ={};
+var Employee = function(employee){
+    this.firstname = employee.firstname;
+    this.lastname = employee.lastname;
+    this.email = employee.email;
+    this.phno=employee.phno;
+    this.designation = employee.designation;
+    this.salary = employee.salary;
+  };
 
 Employee.findById = (id) => {
     return new Promise((resolve,reject)=>{
@@ -44,6 +51,21 @@ Employee.findByNo = (phno) =>{
         }
     });   
 });
+};
+
+Employee.create = (newEmp) =>{    
+    return new Promise((resolve,reject)=>{
+    dbConn.query("INSERT INTO employee set ?", newEmp, function (err, res) {
+        if(err) {
+            console.log("error: ", err);
+            return reject(err);
+        }
+        else{
+            console.log(res.insertId);
+            return resolve(res.insertId);
+        }
+    });           
+    });
 };
 
 module.exports= Employee;
