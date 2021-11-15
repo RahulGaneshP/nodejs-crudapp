@@ -68,5 +68,18 @@ Employee.create = (newEmp) =>{
     });
 };
 
+Employee.update =(id, employee)=>{
+    return new Promise((resolve,reject)=>{
+    dbConn.query("UPDATE employee SET firstname=?,lastname=?,email=?,phno=?,designation=?,salary=? WHERE id = ?", [employee.firstname,employee.lastname,employee.email,employee.phno,employee.designation,employee.salary, id], function (err, res) {
+          if(err) {
+              console.log("error: ", err);
+              return reject( err);
+          }else{   
+            return resolve( res.affectedRows);
+          }
+      }); 
+  });
+};
+
 module.exports= Employee;
         

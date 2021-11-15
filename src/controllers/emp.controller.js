@@ -52,5 +52,19 @@ exports.create = async(req, res) =>{
         }
     };
 
-
+    exports.update = async(req, res) =>{
+        if(req.body.constructor === Object && Object.keys(req.body).length === 0){
+            res.status(400).send({ error:true, message: 'Please provide all required field' });
+        }else{
+            try{
+            var noRows = await Employee.update(req.params.id, new Employee(req.body));
+            res.status(200).json({message:"Employee successfully updated",rowsUpdated: noRows});
+            }
+            catch(err) {
+                console.log(err);
+                res.sendStatus(400);
+            };
+        }
+        };
+    
   

@@ -16,7 +16,7 @@ router.post('/', employeeController.create);
 //router.post('/addbatch', employeeController.createbatch);
 
 // Update a employee with id
-//router.put('/:id', employeeController.update);
+router.put('/:id', employeeController.update);
 
 // Delete a employee with id
 //router.delete('/:id', employeeController.delete);
