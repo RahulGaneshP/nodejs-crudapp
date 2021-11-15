@@ -70,7 +70,7 @@ exports.create = async(req, res) =>{
         exports.delete = async(req, res) =>{
             try{
             const employee = await Employee.delete(req.params.id);
-            res.status(204);   
+            res.status(204).json({message:"Employee deleted"});   
             }
             catch(err){
                 console.log(err);
