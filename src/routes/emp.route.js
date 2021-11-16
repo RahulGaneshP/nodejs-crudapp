@@ -7,13 +7,13 @@ router.get('/:id', employeeController.findById);
 
 router.get('/email/:email', employeeController.findByEmail);
 
-router.get('/phno/:phno', employeeController.findByNo);
+router.get('/phone-no/:phno', employeeController.findByNo);
 
 //create a employee
 router.post('/', employeeController.create);
 
 //create batch
-router.post('/addbatch', employeeController.createbatch);
+router.post('/batch', employeeController.createbatch);
 
 // Update a employee with id
 router.put('/:id', employeeController.update);

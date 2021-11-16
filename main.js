@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
+//app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 const employeeRoutes = require('./src/routes/emp.route')
 
 // using as middleware
-app.use('/employees', employeeRoutes)
+app.use('/v1/employees', employeeRoutes)
 
 // listen for requests
 app.listen(port, () => {
