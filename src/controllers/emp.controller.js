@@ -10,7 +10,7 @@ exports.findById = async(req, res) => {
     }
     catch(err){
             console.log(err);
-            res.sendStatus(400).json({error:err});
+            res.sendStatus(404).json({error:err});
     }
 };
 
@@ -24,7 +24,7 @@ exports.findByEmail = async(req, res)=> {
     }
     catch(err){
         console.log(err);
-        res.sendStatus(400).json({error:err});
+        res.sendStatus(404).json({error:err});
 
     };
 };
@@ -39,7 +39,7 @@ exports.findByNo = async(req, res) => {
         }
     catch(err){
             console.log(err);
-            res.sendStatus(400).json({error:err});
+            res.sendStatus(404).json({error:err});
     
         };
     };
