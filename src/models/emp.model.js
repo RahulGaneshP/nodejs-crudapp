@@ -27,7 +27,7 @@ Employee.findById = (id) => {
                 return reject(err);
             }
             else{
-                console.log("Employee fetch by id successful");
+                console.log("Employee fetch by id successful \n");
                 return resolve(res[0]);
             }
     });
@@ -46,7 +46,7 @@ Employee.findByEmail = (email) =>{
             return reject(err);
         }
         else{
-            console.log("Employee fetch by email successful");
+            console.log("Employee fetch by email successful \n");
             return resolve( res[0]);
         }
     });   
@@ -65,7 +65,7 @@ Employee.findByNo = (phno) =>{
             return reject(err);
         }
         else{
-            console.log("Employee fetch by number successful");
+            console.log("Employee fetch by number successful \n");
             return resolve( res[0]);
         }
     });   
@@ -121,7 +121,7 @@ Employee.delete = (id)=>{
         return reject( err);
        }
        else{
-          console.log("employee deleted successfully");
+          console.log("employee deleted successfully \n");
           return resolve(res);
        }
    }); 
